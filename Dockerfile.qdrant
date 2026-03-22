@@ -1,0 +1,9 @@
+# Qdrant Vector Database
+FROM qdrant/qdrant:latest
+
+# Copy custom config if needed
+# COPY qdrant_config.yaml /qdrant/config/
+
+EXPOSE 6333
+
+CMD ["./entrypoint.sh"]

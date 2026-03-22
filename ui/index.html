@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LexProbe ⚖️</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #facc15;
+    }
+
+    #chat {
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 15px;
+      height: 500px;
+      overflow-y: auto;
+      background: #020617;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .msg {
+      margin: 0;
+      padding: 12px 15px;
+      border-radius: 10px;
+      max-width: 80%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      white-space: pre-wrap;
+    }
+
+    .user {
+      background: #3b82f6;
+      color: white;
+      margin-left: auto;
+      align-self: flex-end;
+    }
+
+    .bot {
+      background: #1e293b;
+      color: #e2e8f0;
+      align-self: flex-start;
+    }
+
+    .msg h3 {
+      margin: 0 0 8px 0;
+      font-size: 1.1em;
+      color: #facc15;
+    }
+
+    .msg ul {
+      margin: 5px 0;
+      padding-left: 20px;
+    }
+
+    .msg .sources {
+      font-size: 0.8em;
+      color: #94a3b8;
+      margin-top: 5px;
+    }
+
+    .msg .confidence {
+      font-size: 0.8em;
+      color: #6ee7b7;
+      margin-top: 3px;
+      font-weight: bold;
+    }
+
+    #inputBox {
+      display: flex;
+      margin-top: 10px;
+      gap: 10px;
+    }
+
+    input {
+      flex: 1;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1em;
+    }
+
+    button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      background: #22c55e;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: #16a34a;
+    }
+
+    #uploadBox {
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 15px;
+      background: #020617;
+      margin-top: 10px;
+    }
+
+    #uploadBox h3 {
+      margin: 0 0 10px 0;
+      color: #facc15;
+    }
+
+    #uploadBox input[type="file"] {
+      padding: 8px;
+    }
+
+    #uploadBox input[type="text"] {
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #1e293b;
+      background: #0f172a;
+      color: #e2e8f0;
+      flex: 1;
+    }
+
+    #uploadBox button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      background: #22c55e;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    #uploadBox button:hover {
+      background: #16a34a;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>LexProbe ⚖️</h2>
+
+  <div id="chat"></div>
+
+  <div id="spinner">⏳ Thinking...</div>
+
+  <div id="inputBox">
+    <input id="question" placeholder="Ask about EU law..." />
+    <button onclick="ask()">Send</button>
+  </div>
+
+  <div id="uploadBox" style="margin-top: 20px; display: none;">
+    <h3>Upload Contract for Analysis</h3>
+    <div style="display: flex; gap: 10px; align-items: center;">
+      <input type="file" id="fileInput" accept=".pdf,.docx,.txt" />
+      <input type="text" id="contractPrompt" placeholder="Describe what to analyze (e.g., 'Check for liability risks')" style="flex: 1;" />
+      <button onclick="uploadAndAnalyze()">Analyze Contract</button>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 10px;">
+    <button onclick="toggleMode()">Switch to Contract Analysis</button>
+  </div>
+
+  <script src="app.js"></script>
+
+</body>
+</html>

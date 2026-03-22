@@ -1,20 +1,26 @@
-def build_prompt(question: str, contexts: list):
-    context_text = "\n\n".join([
-        f"{c['article']} ({c['doc_id']}): {c['text']}"
-        for c in contexts
-    ])
+from .context_builder import format_contexts
+
+
+def build_prompt(question, contexts):
+    context_block = format_contexts(contexts)
 
     return f"""
-You are a legal assistant specialized in EU law.
+You are a legal assistant.
 
 Answer the question using ONLY the context below.
-Cite articles and document IDs.
+If unsure, say "Not enough information".
 
-Context:
-{context_text}
-
-Question:
+QUESTION:
 {question}
 
-Answer:
+CONTEXT:
+{context_block}
+
+INSTRUCTIONS:
+- Be concise
+- Use bullet points
+- Cite articles like (Article X, DOC_ID)
+- No fluff
+
+ANSWER:
 """

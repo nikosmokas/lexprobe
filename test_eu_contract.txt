@@ -1,0 +1,28 @@
+NON-DISCLOSURE AGREEMENT TEST DOCUMENT
+
+This test agreement is designed to trigger retrieval of EU legal references from the embedded database.
+
+PARTIES:
+Party A: TechCorp GmbH (German company)
+Party B: DataAnalytics Inc. (US company)
+
+CONFIDENTIAL INFORMATION:
+The parties agree to protect personal data, customer information, and trade secrets in accordance with EU data protection regulations.
+
+LIABILITY:
+In case of breach, the liable party shall compensate for damages up to €100,000 maximum, excluding consequential damages.
+
+DATA PROCESSING:
+Party A shall process personal data only for legitimate business purposes and ensure compliance with GDPR requirements including data minimization, purpose limitation, and data subject rights.
+
+GOVERNING LAW:
+This agreement shall be governed by the laws of Germany, with exclusive jurisdiction in Berlin courts.
+
+TERM:
+This agreement remains in effect for 5 years from the date of signing.
+
+TERMINATION:
+Either party may terminate this agreement with 30 days written notice.
+
+SIGNATURES:
+[Signatures]
