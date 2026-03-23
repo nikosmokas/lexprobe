@@ -31,22 +31,37 @@ docker run -p 6333:6333 -v ${PWD}/qdrant_storage:/qdrant/storage qdrant/qdrant
 
 ## Deployment
 
-### Quick Start with Docker Compose
+### Deployment Options
 
-1. **Set environment variables:**
-   ```bash
-   export GEMINI_API_KEY="your-api-key-here"
-   ```
+Choose your deployment target:
 
-2. **Deploy all services:**
-   ```bash
-   docker-compose up --build -d
-   ```
+#### 🚀 **Railway (Recommended for beginners)**
+1. Create [Railway](https://railway.app) account
+2. Connect your GitHub repo
+3. Add `GEMINI_API_KEY` environment variable
+4. Push to main - Railway auto-deploys using `docker-compose.yml`
 
-3. **Access the application:**
-   - Frontend: http://localhost:5500
-   - Backend API: http://localhost:8000
-   - Qdrant Dashboard: http://localhost:6333
+#### 🖥️ **VPS (DigitalOcean/Linode/AWS EC2)**
+1. Provision a VPS with Docker installed
+2. Add SSH key to `authorized_keys`
+3. Set these GitHub secrets:
+   - `SERVER_HOST`: your-server.com
+   - `SERVER_USER`: root
+   - `SERVER_SSH_KEY`: your private SSH key
+   - `GEMINI_API_KEY`: your API key
+4. Use `.github/workflows/deploy-vps.yml`
+
+#### ☁️ **Cloud Platforms**
+- **Render**: Connect repo, auto-deploys Docker
+- **AWS ECS**: Use docker-compose with ECS context
+- **Google Cloud Run**: Deploy containers directly
+- **Azure Container Instances**: Quick container deployment
+
+#### 🏠 **Local Development**
+```bash
+export GEMINI_API_KEY="your-key"
+docker-compose up --build
+```
 
 ### Manual Deployment
 

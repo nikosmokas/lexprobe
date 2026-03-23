@@ -69,6 +69,31 @@ jobs:
 
     - name: Deploy to production
       run: |
-        echo "Deployment commands would go here"
-        echo "Example: SSH into server and docker-compose up"
-        # Add your deployment commands
+        echo "🚀 Starting deployment..."
+
+        # Option 1: Deploy to VPS via SSH
+        # echo "${{ secrets.SERVER_SSH_KEY }}" > ssh_key && chmod 600 ssh_key
+        # ssh -i ssh_key -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'EOF'
+        #   cd /path/to/your/app
+        #   git pull origin main
+        #   export GEMINI_API_KEY="${{ secrets.GEMINI_API_KEY }}"
+        #   docker-compose down
+        #   docker-compose pull
+        #   docker-compose up -d
+        #   docker system prune -f
+        # EOF
+
+        # Option 2: Deploy to Railway/Render/Vercel
+        # Add your platform-specific deployment commands here
+
+        # Option 3: Deploy to AWS/GCP/Azure
+        # Add cloud provider deployment commands here
+
+        echo "✅ Deployment placeholder - configure for your target environment"
+        echo "📋 Options:"
+        echo "  - VPS: SSH into server and docker-compose up"
+        echo "  - Railway: railway deploy"
+        echo "  - Render: Use their Docker deployment"
+        echo "  - AWS: ECS or EC2 with docker-compose"
+        echo "  - GCP: Cloud Run or GKE"
+        echo "  - Azure: Container Instances or AKS"

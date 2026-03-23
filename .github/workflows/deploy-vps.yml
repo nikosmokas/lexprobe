@@ -1,0 +1,34 @@
+# VPS Deployment Example (DigitalOcean, Linode, etc.)
+# Add these secrets to GitHub:
+# - SERVER_HOST: your-server.com
+# - SERVER_USER: root (or your SSH user)
+# - SERVER_SSH_KEY: your-private-ssh-key
+# - GEMINI_API_KEY: your-api-key
+
+# On your server, ensure:
+# 1. Docker and docker-compose are installed
+# 2. SSH key is added to authorized_keys
+# 3. App directory exists: /opt/lexprobe/
+
+name: Deploy to VPS
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to VPS
+        run: |
+          echo "${{ secrets.SERVER_SSH_KEY }}" > ssh_key && chmod 600 ssh_key
+          ssh -i ssh_key -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'EOF'
+            cd /opt/lexprobe
+            git pull origin main
+            export GEMINI_API_KEY="${{ secrets.GEMINI_API_KEY }}"
+            docker-compose down
+            docker-compose pull
+            docker-compose up -d --build
+            docker system prune -f
+            echo "✅ Deployment complete!"
+          EOF
